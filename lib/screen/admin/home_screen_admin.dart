@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:twc/screen/admin/list_sector_screen.dart';
 import 'package:twc/screen/admin/menu_pegawai_screen.dart';
 import 'package:twc/screen/login_screen.dart';
-import 'package:twc/screen/pegawai/list_laporan_pegawai.dart';
 import 'package:twc/service/preference_helper.dart';
 import 'package:twc/widgets/base_screen.dart';
 
@@ -54,9 +54,7 @@ class HomeScreenAdmin extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ListLaporanPegawai(
-                    isGetAll: true,
-                  ),
+                  builder: (context) => const ListSectorScreen(),
                 ),
               );
             },

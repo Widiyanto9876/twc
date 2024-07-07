@@ -9,9 +9,13 @@ import 'package:twc/widgets/base_screen.dart';
 
 class ListLaporanPegawai extends StatefulWidget {
   final bool isGetAll;
+  final String? sector;
 
-  const ListLaporanPegawai({Key? key, required this.isGetAll})
-      : super(key: key);
+  const ListLaporanPegawai({
+    Key? key,
+    required this.isGetAll,
+    this.sector,
+  }) : super(key: key);
 
   @override
   State<ListLaporanPegawai> createState() => _ListLaporanPegawaiState();
@@ -49,6 +53,7 @@ class _ListLaporanPegawaiState extends State<ListLaporanPegawai> {
     PegawaiService()
         .getListLaporanPegawai(
       idUser: widget.isGetAll ? "" : id.toString(),
+      sector: widget.sector,
     )
         .then((value) {
       setState(() {

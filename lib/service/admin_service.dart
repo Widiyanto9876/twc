@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:twc/models/list_sector_model.dart';
 import 'package:twc/models/user_model.dart';
 import 'package:twc/service/network_helper.dart';
 import 'package:twc/service/preference_helper.dart';
@@ -76,6 +77,24 @@ class AdminService {
         onLoading(false);
       }
       return UserModel.fromJson(
+        response.data,
+      );
+    } catch (e) {
+      onLoading(false);
+      throw Exception(e);
+    }
+  }
+
+  Future<ListSectorModel> getListSector({
+    required Function(bool) onLoading,
+  }) async {
+    try {
+      onLoading(true);
+      var response = await _dio.get("https://tamanwisatacandi.com/api/sector");
+      if (response.statusCode == 200) {
+        onLoading(false);
+      }
+      return ListSectorModel.fromJson(
         response.data,
       );
     } catch (e) {

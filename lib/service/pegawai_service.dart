@@ -89,11 +89,12 @@ class PegawaiService {
 
   Future<ListLaporanPegawaiModel> getListLaporanPegawai({
     required String idUser,
+    String? sector,
   }) async {
     try {
       if (idUser == "") {
-        var response =
-            await _dio.get("https://tamanwisatacandi.com/api/report");
+        var response = await _dio
+            .get("https://tamanwisatacandi.com/api/report?sector=$sector");
         return ListLaporanPegawaiModel.fromJson(
           response.data,
         );
